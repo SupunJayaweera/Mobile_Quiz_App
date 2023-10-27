@@ -21,8 +21,8 @@ class QuestionPaperModel {
     description = json['Description'] as String,
     timeSeconds = json['time_seconds'],
     questions = (json['questions'] as List)
-    .map((dynamic e) => Questions.fromJson(e as Map<String, dynamic>))
-    .toList();
+      .map((dynamic e) => Questions.fromJson(e as Map<String, dynamic>))
+      .toList();
     
   
 
@@ -33,9 +33,7 @@ class QuestionPaperModel {
     data['image_url'] = this.imageUrl;
     data['Description'] = this.description;
     data['time_seconds'] = this.timeSeconds;
-    if (this.questions != null) {
-      data['questions'] = this.questions!.map((v) => v.toJson()).toList();
-    }
+   
     return data;
   }
 }
@@ -60,7 +58,7 @@ class Questions {
     data['id'] = this.id;
     data['question'] = this.question;
     if (this.answers != null) {
-      data['answers'] = this.answers!.map((v) => v.toJson()).toList();
+      data['answers'] = this.answers.map((v) => v.toJson()).toList();
     }
     data['correct_answer'] = this.correctAnswer;
     return data;

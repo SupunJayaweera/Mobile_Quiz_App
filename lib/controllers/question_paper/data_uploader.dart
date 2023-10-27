@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:mobile_quiz_app/firebase_ref/loading_status.dart';
 import 'package:mobile_quiz_app/firebase_ref/references.dart';
 import 'package:mobile_quiz_app/models/question_paper_model.dart';
 
@@ -16,7 +17,12 @@ class DataUploader extends GetxController{
     super.onReady();
   }
 
+  final loadingStatus = LoadingStatus.loading.obs; // loading status observable 
+
+
   Future<void> uploadData()  async {
+
+    loadingStatus.value = LoadingStatus.loading; //0 
 
     final fireStore = FirebaseFirestore.instance;
 
@@ -35,18 +41,43 @@ class DataUploader extends GetxController{
       questionPapers.add(QuestionPaperModel.fromJson(json.decode(stringPaperContent)));
     }
     //print('Items number ${questionPapers[0].description}');
-    var batch = fireStore.batch();
+    try {
+      var batch = fireStore.batch();
 
-    for(var paper in questionPapers){
-      batch.set(questionPaperRF.doc(paper.id), {
-        "title": paper.title,
-        "image_url" : paper.imageUrl,
-        "description": paper.description,
-        "time_seconds" : paper.timeSeconds,
-        "questions_count" : paper.questions == null?0:paper.questions!.length,
-      });
+        for (var paper in questionPapers) {
+          batch.set(questionPaperRF.doc(paper.id), {
+            "title": paper.title,
+            "image_url": paper.imageUrl,
+            "description": paper.description,
+            "time_seconds": paper.timeSeconds,
+            "questions_count": paper.questions == null ? 0 : paper.questions!.length
+          });
+          for(var questions in paper.questions!){
+            final questionPath = questionRF(paperId: paper.id, questionId: questions.id);
+            batch.set(questionPath, {
+              "question" : questions.question,
+              "correct_answer" : questions.correctAnswer
+
+            });
+
+          for(var answer in questions.answers){
+            batch.set(questionPath.collection("answers").doc(answer.identifier),{
+              "identifire" : answer.identifier,
+              "answer" : answer.answer
+            });
+          }
+        }
+      }
+
+      
+      await batch.commit();
+      loadingStatus.value = LoadingStatus.completed; // 1
+
+      print("Batch commit successful");
+    } catch (e) {
+      print("Error during batch commit: $e");
     }
-    await batch.commit();
+
 
   }
 }
