@@ -8,6 +8,7 @@ class InitialBindings implements Bindings {
   void dependencies() {
     Get.put(ThemeController());
     Get.put(AuthConatroller(), permanent: true);
+    //Get.put(NotificationService());
     Get.put(FirebaseStorageService());
   }
 }

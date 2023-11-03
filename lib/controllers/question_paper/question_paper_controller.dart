@@ -1,15 +1,18 @@
 import 'package:get/get.dart';
+import 'package:mobile_quiz_app/controllers/question_paper/app_logger.dart';
+import 'package:mobile_quiz_app/controllers/question_paper/auth_controller.dart';
 import 'package:mobile_quiz_app/firebase_ref/references.dart';
 import 'package:mobile_quiz_app/models/question_paper_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobile_quiz_app/services/firebase_storage_service.dart';
+import 'auth_controller.dart';
 
-class QuestionPaperController extends GetxController{
-  final allPaperImages = <String>[].obs; 
-  final allPapers =<QuestionPaperModel>[].obs;
+class QuestionPaperController extends GetxController {
+  final allPaperImages = <String>[].obs;
+  final allPapers = <QuestionPaperModel>[].obs;
 
   @override
-  void onReady(){
+  void onReady() {
     getAllPapers();
     super.onReady();
   }
@@ -25,21 +28,37 @@ class QuestionPaperController extends GetxController{
     try {
       QuerySnapshot<Map<String, dynamic>> data = await questionPaperRF.get();
       final paperList = data.docs
-      .map((paper) => QuestionPaperModel
-      .fromSnapshot(paper))
-      .toList();
-    allPapers.assignAll(paperList);
+          .map((paper) => QuestionPaperModel.fromSnapshot(paper))
+          .toList();
+      allPapers.assignAll(paperList);
 
-      for(var paper in paperList){
-        final imgUrl = await Get.find<FirebaseStorageService>().getImage(paper.title);
+      for (var paper in paperList) {
+        final imgUrl =
+            await Get.find<FirebaseStorageService>().getImage(paper.title);
         // allPaperImages.add(imgUrl!);
         paper.imageUrl = imgUrl;
       }
       allPapers.assignAll(paperList);
       //print("Successful");
-      
     } catch (e) {
-      print(e);
+      AppLogger.e(e);
+    }
+  }
+
+  void navigateToQuestions(
+      {required QuestionPaperModel paper, bool tryAgain = false}) {
+    AuthConatroller _authController = Get.find();
+    if (_authController.isLoggedIn()) {
+      if (tryAgain) {
+        Get.back();
+        //Get.offNamed();
+      } else {
+        print("logged in");
+        //Get.toNamed();
+      }
+    } else {
+      print('The title is ${paper.title}');
+      _authController.showLoginAlertDialogue();
     }
   }
 }

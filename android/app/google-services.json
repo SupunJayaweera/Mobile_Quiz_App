@@ -12,7 +12,12 @@
           "package_name": "com.example.mobile_quiz_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "590573096795-fbpdsqksq22oqva6avniv8pdk40b2drn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDhsZlixF9uiLU6Xy9JQgfFZv7yT0GNbjI"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590573096795-fbpdsqksq22oqva6avniv8pdk40b2drn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "590573096795-3a6bt5j9df2kjfvh10mac8anvoieqbps.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mobileQuizApp"
+              }
+            }
+          ]
         }
       }
     }

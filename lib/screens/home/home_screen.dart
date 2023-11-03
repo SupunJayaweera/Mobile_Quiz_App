@@ -15,6 +15,7 @@ import 'package:mobile_quiz_app/widgets/content_area.dart';
 
 class HomeScreen extends GetView<MyZoomDrawerController> {
   const HomeScreen({super.key});
+  static const String routeName = "/home";
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
           angle: 0.0,
           style: DrawerStyle.defaultStyle,
           controller: _.zoomDrawerController,
-          slideWidth: MediaQuery.of(context).size.width * 0.5,
+          slideWidth: MediaQuery.of(context).size.width * 1.4,
           menuScreen: MyMenuScreen(),
           mainScreen: Container(
             decoration: BoxDecoration(gradient: mainGradient()),
