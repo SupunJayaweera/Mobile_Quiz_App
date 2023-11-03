@@ -38,68 +38,71 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
           mainScreen: Container(
             decoration: BoxDecoration(gradient: mainGradient()),
             child: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(mobileScreenPadding),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AppCircleButton(
-                            onTap: controller.toggleDrawer,
-                            child: const Icon(AppIcons.menuLeft,
-                                color: Colors.red)),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Row(
-                            children: [
-                              const Icon(AppIcons.peace, color: Colors.red),
-                              Text(
-                                "Hello friend",
-                                style: detailText.copyWith(
-                                    color: onSurfaceTextColor),
-                              ),
-                            ],
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(mobileScreenPadding),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppCircleButton(
+                              onTap: controller.toggleDrawer,
+                              child: const Icon(AppIcons.menuLeft,
+                                  color: Colors.red)),
+                          const SizedBox(
+                            height: 10,
                           ),
-                        ),
-                        Text(
-                          "What do you want to learn today?",
-                          style: headerText.copyWith(color: onSurfaceTextColor),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Row(
+                              children: [
+                                const Icon(AppIcons.peace, color: Colors.red),
+                                Text(
+                                  "Hello friend",
+                                  style: detailText.copyWith(
+                                      color: onSurfaceTextColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Text(
+                            "What do you want to learn today?",
+                            style:
+                                headerText.copyWith(color: onSurfaceTextColor),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Expanded(
-                      child: ContentArea(
-                        addPadding: false,
-                        child: Obx(
-                          () => ListView.separated(
-                              padding: UIParameters.mobileScreenPadding,
-                              shrinkWrap: true,
-                              itemBuilder: (BuildContext context, int index) {
-                                return QuestionCard(
-                                    model: _questionPaperController
-                                        .allPapers[index]);
-                              },
-                              separatorBuilder:
-                                  (BuildContext context, int index) {
-                                return const SizedBox(
-                                  height: 20,
-                                );
-                              },
-                              itemCount:
-                                  _questionPaperController.allPapers.length),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Expanded(
+                        child: ContentArea(
+                          addPadding: false,
+                          child: Obx(
+                            () => ListView.separated(
+                                padding: UIParameters.mobileScreenPadding,
+                                shrinkWrap: true,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return QuestionCard(
+                                      model: _questionPaperController
+                                          .allPapers[index]);
+                                },
+                                separatorBuilder:
+                                    (BuildContext context, int index) {
+                                  return const SizedBox(
+                                    height: 20,
+                                  );
+                                },
+                                itemCount:
+                                    _questionPaperController.allPapers.length),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
