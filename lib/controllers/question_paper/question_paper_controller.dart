@@ -55,6 +55,7 @@ class QuestionPaperController extends GetxController {
         //Get.offNamed();
       } else {
         //print("logged in");
+
         Get.toNamed(QuestionsScreen.routeName, arguments: paper); // route
       }
     } else {

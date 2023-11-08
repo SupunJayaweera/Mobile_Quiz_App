@@ -24,10 +24,6 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
     return Scaffold(
       body: GetBuilder<MyZoomDrawerController>(builder: (_) {
         return ZoomDrawer(
-          drawerShadowsBackgroundColor:
-              const Color.fromARGB(255, 128, 34, 34).withOpacity(0.5),
-          menuBackgroundColor:
-              const Color.fromARGB(255, 116, 53, 105).withOpacity(0.5),
           borderRadius: 50.0,
           showShadow: true,
           angle: 0.0,
