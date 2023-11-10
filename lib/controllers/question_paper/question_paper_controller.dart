@@ -31,6 +31,7 @@ class QuestionPaperController extends GetxController {
       final paperList = data.docs
           .map((paper) => QuestionPaperModel.fromSnapshot(paper))
           .toList();
+
       allPapers.assignAll(paperList);
 
       for (var paper in paperList) {

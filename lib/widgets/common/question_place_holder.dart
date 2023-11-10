@@ -1,3 +1,4 @@
+import 'package:easy_separator/easy_separator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -21,8 +22,27 @@ class QuestionScreenHolder extends StatelessWidget {
     );
 
     return Shimmer.fromColors(
-        child: child,
-        baseColor: Colors.white,
-        highlightColor: Colors.blueGrey.withOpacity(0.5));
+      baseColor: Colors.white,
+      highlightColor: Colors.blueGrey.withOpacity(0.5),
+      child: EasySeparatedColumn(
+        separatorBuilder: (BuildContext context, int index) {
+          return const SizedBox(
+            height: 20,
+          );
+        },
+        children: [
+          EasySeparatedColumn(
+              children: [line, line, line, line],
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(
+                  height: 10,
+                );
+              }),
+          answer,
+          answer,
+          answer,
+        ],
+      ),
+    );
   }
 }

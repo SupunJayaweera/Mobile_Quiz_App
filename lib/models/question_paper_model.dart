@@ -57,6 +57,7 @@ class Questions {
   String question;
   List<Answers> answers;
   String? correctAnswer;
+  String? selectedAnswer;
 
   Questions(
       {required this.id,
@@ -79,34 +80,32 @@ class Questions {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['question'] = this.question;
-    if (this.answers != null) {
-      data['answers'] = this.answers.map((v) => v.toJson()).toList();
-    }
-    data['correct_answer'] = this.correctAnswer;
+    data['id'] = id;
+    data['question'] = question;
+    data['answers'] = answers.map((v) => v.toJson()).toList();
+    data['correct_answer'] = correctAnswer;
     return data;
   }
 }
 
 class Answers {
-  String? identifier;
+  String? identifire;
   String? answer;
 
-  Answers({this.identifier, this.answer});
+  Answers({this.identifire, this.answer});
 
   Answers.fromJson(Map<String, dynamic> json)
-      : identifier = json['identifier'],
-        answer = json['Answer'];
+      : identifire = json['identifire'],
+        answer = json['answer'];
 
   Answers.fromSnapshot(QueryDocumentSnapshot<Map<String, dynamic>> snapshot)
-      : identifier = snapshot['identifier'] as String?,
+      : identifire = snapshot['identifire'] as String?,
         answer = snapshot['answer'] as String?;
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['identifier'] = this.identifier;
-    data['Answer'] = this.answer;
+    data['identifire'] = identifire;
+    data['answer'] = answer;
     return data;
   }
 }

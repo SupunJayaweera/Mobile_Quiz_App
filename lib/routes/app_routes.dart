@@ -8,6 +8,8 @@ import 'package:mobile_quiz_app/screens/home/home_screen.dart';
 import 'package:mobile_quiz_app/screens/introduction/introduction.dart';
 import 'package:mobile_quiz_app/screens/login/login_screen.dart';
 import 'package:mobile_quiz_app/screens/questions/questions_screen.dart';
+import 'package:mobile_quiz_app/screens/questions/result_screen.dart';
+import 'package:mobile_quiz_app/screens/questions/test_overview_screen.dart';
 import 'package:mobile_quiz_app/screens/splash/splash_screen.dart';
 
 class AppRoutes {
@@ -26,7 +28,15 @@ class AppRoutes {
             name: QuestionsScreen.routeName,
             page: () => QuestionsScreen(),
             binding: BindingsBuilder(() {
-              Get.put(QuestionsController());
-            }))
+              Get.put<QuestionsController>(QuestionsController());
+            })),
+        GetPage(
+          name: TestOverviewScreen.routeName,
+          page: () => const TestOverviewScreen(),
+        ),
+        GetPage(
+          name: ResultScreen.routeName,
+          page: () => const ResultScreen(),
+        )
       ];
 }

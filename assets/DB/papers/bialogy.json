@@ -11,19 +11,19 @@
       "answers": [
         {
           "identifier": "A",
-          "Answer": "Symbiosis"
+          "answer": "Symbiosis"
         },
         {
           "identifier": "B",
-          "Answer": "Mutualism"
+          "answer": "Mutualism"
         },
         {
           "identifier": "C",
-          "Answer": "Parasitism"
+          "answer": "Parasitism"
         },
         {
           "identifier": "D",
-          "Answer": "Predation"
+          "answer": "Predation"
         }
       ],
       "correct_answer": "D"
@@ -34,19 +34,19 @@
       "answers": [
         {
           "identifier": "A",
-          "Answer": "Decomposer"
+          "answer": "Decomposer"
         },
         {
           "identifier": "B",
-          "Answer": "Predator"
+          "answer": "Predator"
         },
         {
           "identifier": "C",
-          "Answer": "Scavenger"
+          "answer": "Scavenger"
         },
         {
           "identifier": "D",
-          "Answer": "Prey"
+          "answer": "Prey"
         }
       ],
       "correct_answer": "D"
@@ -57,19 +57,19 @@
       "answers": [
         {
           "identifier": "A",
-          "Answer": "Mutualism"
+          "answer": "Mutualism"
         },
         {
           "identifier": "B",
-          "Answer": "Symbiosis"
+          "answer": "Symbiosis"
         },
         {
           "identifier": "C",
-          "Answer": "Competition"
+          "answer": "Competition"
         },
         {
           "identifier": "D",
-          "Answer": "Commensialism"
+          "answer": "Commensialism"
         }
       ],
       "correct_answer": "B"
@@ -80,19 +80,19 @@
       "answers": [
         {
           "identifier": "A",
-          "Answer": "Mutualism"
+          "answer": "Mutualism"
         },
         {
           "identifier": "B",
-          "Answer": "Commensialism"
+          "answer": "Commensialism"
         },
         {
           "identifier": "C",
-          "Answer": "Parasitism"
+          "answer": "Parasitism"
         },
         {
           "identifier": "D",
-          "Answer": "Predation"
+          "answer": "Predation"
         }
       ],
       "correct_answer": "A"
@@ -103,19 +103,19 @@
       "answers": [
         {
           "identifier": "A",
-          "Answer": "ribosomes"
+          "answer": "ribosomes"
         },
         {
           "identifier": "B",
-          "Answer": "mitochondria"
+          "answer": "mitochondria"
         },
         {
           "identifier": "C",
-          "Answer": "endoplasmic reticulum"
+          "answer": "endoplasmic reticulum"
         },
         {
           "identifier": "D",
-          "Answer": "chloroplasts"
+          "answer": "chloroplasts"
         }
       ],
       "correct_answer": "D"
