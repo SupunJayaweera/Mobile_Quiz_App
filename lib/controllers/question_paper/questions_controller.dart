@@ -1,11 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
+import 'package:mobile_quiz_app/controllers/question_paper/auth_controller.dart';
+import 'package:mobile_quiz_app/controllers/question_paper/question_paper_controller.dart';
 import 'package:mobile_quiz_app/firebase_ref/loading_status.dart';
 import 'package:mobile_quiz_app/firebase_ref/references.dart';
 import 'package:mobile_quiz_app/models/question_paper_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mobile_quiz_app/screens/home/home_screen.dart';
 import 'package:mobile_quiz_app/screens/questions/result_screen.dart';
 
 class QuestionsController extends GetxController {
@@ -107,7 +111,7 @@ class QuestionsController extends GetxController {
     // print("abc");
     // print(answer);
     // print("efg");
-    update(['answers_list']);
+    update(['answers_list', 'answer_review_list']);
   }
 
   void jumpToQuestion(int index, {bool isGoBack = true}) {
@@ -158,5 +162,15 @@ class QuestionsController extends GetxController {
   void complete() {
     _timer!.cancel();
     Get.offAndToNamed(ResultScreen.routeName);
+  }
+
+  void tryAgain() {
+    Get.find<QuestionPaperController>()
+        .navigateToQuestions(paper: questionPaperModel, tryAgain: true);
+  }
+
+  void navigateToHome() {
+    _timer!.cancel();
+    Get.offNamedUntil(HomeScreen.routeName, (route) => false);
   }
 }
