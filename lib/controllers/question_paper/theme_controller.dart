@@ -3,17 +3,16 @@ import 'package:get/get.dart';
 import 'package:mobile_quiz_app/configs/themes/app_dark_theme.dart';
 import 'package:mobile_quiz_app/configs/themes/app_light_theme.dart';
 
-class ThemeController extends GetxController{
-
+class ThemeController extends GetxController {
   late ThemeData _darkTheme;
   late ThemeData _lightTheme;
 
   @override
-  void onInit(){ 
+  void onInit() {
     initializeThemeData();
     super.onInit();
   }
-  
+
   initializeThemeData() {
     _darkTheme = DarkTheme().buildDarkTheme();
     _lightTheme = LightTheme().buidLightTheme();
@@ -21,5 +20,4 @@ class ThemeController extends GetxController{
 
   ThemeData get darkTheme => _darkTheme;
   ThemeData get lightTheme => _lightTheme;
-
 }

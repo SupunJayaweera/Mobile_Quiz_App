@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      //theme: DarkTheme().buildDarkTheme(),
+      darkTheme: DarkTheme().buildDarkTheme(),
       theme: Get.find<ThemeController>().lightTheme,
       getPages: AppRoutes.routes(),
     );
