@@ -11,6 +11,7 @@ import 'package:mobile_quiz_app/models/question_paper_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobile_quiz_app/screens/home/home_screen.dart';
 import 'package:mobile_quiz_app/screens/questions/result_screen.dart';
+import 'package:mobile_quiz_app/screens/questions/test_overview_screen.dart';
 
 class QuestionsController extends GetxController {
   final loadingStatus = LoadingStatus.loading.obs;
@@ -148,6 +149,7 @@ class QuestionsController extends GetxController {
     _timer = Timer.periodic(duration, (Timer timer) {
       if (remainSeconds == 0) {
         timer.cancel();
+        timeout();
       } else {
         int minutes = remainSeconds ~/ 60;
         int seconds = remainSeconds % 60;
@@ -157,6 +159,12 @@ class QuestionsController extends GetxController {
         remainSeconds--;
       }
     });
+  }
+
+  void timeout() {
+    _timer!.cancel();
+    Get.offAndToNamed(TestOverviewScreen.routeName);
+    Get.offAndToNamed(ResultScreen.routeName);
   }
 
   void complete() {
