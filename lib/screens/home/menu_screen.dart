@@ -49,6 +49,11 @@ class MyMenuScreen extends GetView<MyZoomDrawerController> {
                       flex: 1,
                     ),
                     _DrawerButton(
+                      icon: Icons.book_online_sharp,
+                      label: "Recent Scores",
+                      onPressed: () => controller.recentScores(),
+                    ),
+                    _DrawerButton(
                       icon: Icons.web,
                       label: "website",
                       onPressed: () => controller.website(),
