@@ -28,13 +28,13 @@ class LoginScreen extends GetView<AuthConatroller> {
             children: [
               Image.asset(
                 "assets/images/app_splash_logo.png",
-                width: 200,
-                height: 200,
+                width: 100,
+                height: 100,
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(vertical: 40),
+                padding: EdgeInsets.symmetric(vertical: 30),
                 child: Text(
-                  "Your on-the-go learning companion, with resources, quizzes, and tools for effective, personalized studying and academic success.",
+                  "",
                   style: TextStyle(
                     color: onSurfaceTextColor,
                     fontWeight: FontWeight.bold,
@@ -71,7 +71,7 @@ class LoginScreen extends GetView<AuthConatroller> {
                   return null;
                 },
               ),
-              SizedBox(
+              const SizedBox(
                   height: 16), // Add some space between text field and button
               // Sign In button
               ElevatedButton(
@@ -83,7 +83,24 @@ class LoginScreen extends GetView<AuthConatroller> {
                     );
                   }
                 },
-                child: Text("Sign In"),
+                style: ElevatedButton.styleFrom(
+                    shape: const StadiumBorder(),
+                    backgroundColor:
+                        Theme.of(context).splashColor.withOpacity(0.5),
+                    elevation: 10,
+                    shadowColor: const Color.fromARGB(255, 34, 37, 41),
+                    minimumSize: const Size.fromHeight(45)),
+                child: Text(
+                  "Sign In",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(height: 16),
+
+              const Center(
+                child: Text(
+                    "If you don't have an account please register by clicking below button..."),
               ),
               // Register button
               TextButton(
@@ -94,29 +111,53 @@ class LoginScreen extends GetView<AuthConatroller> {
                 child: Text(
                   "Register",
                   style: TextStyle(
-                    color: Theme.of(context).primaryColorDark,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               // Sign In with Google button (your existing code)
-              MainButton(
-                onTap: () {
+              ElevatedButton(
+                onPressed: () {
                   controller.signInWithGoogle();
                 },
+                style: ElevatedButton.styleFrom(
+                    shape: const StadiumBorder(),
+                    backgroundColor:
+                        Theme.of(context).splashColor.withOpacity(0.5),
+                    elevation: 10,
+                    shadowColor: const Color.fromARGB(255, 34, 37, 41),
+                    minimumSize: const Size.fromHeight(45)),
                 child: Stack(
                   children: [
                     Positioned(
                       top: 0,
                       bottom: 0,
                       left: 0,
-                      child: SvgPicture.asset("assets/icons/google.svg"),
+                      child: Transform.scale(
+                        scale: 2,
+                        child: Container(
+                          width: 20,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(1.0),
+                            child: SvgPicture.asset(
+                              "assets/icons/google.svg",
+                              width: 36,
+                              height: 36,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                    Center(
+                    const Center(
                       child: Text(
                         "Sign in with Google",
                         style: TextStyle(
-                          color: Theme.of(context).primaryColor,
+                          color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
