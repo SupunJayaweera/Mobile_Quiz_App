@@ -163,8 +163,7 @@ class QuestionsController extends GetxController {
 
   void timeout() {
     _timer!.cancel();
-    Get.offAndToNamed(TestOverviewScreen.routeName);
-    Get.offAndToNamed(ResultScreen.routeName);
+    Get.off(ResultScreen());
   }
 
   void complete() {

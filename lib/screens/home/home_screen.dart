@@ -30,7 +30,7 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
           style: DrawerStyle.defaultStyle,
           controller: _.zoomDrawerController,
           slideWidth: MediaQuery.of(context).size.width * 1.4,
-          menuScreen: MyMenuScreen(),
+          menuScreen: const MyMenuScreen(),
           mainScreen: Container(
             decoration: BoxDecoration(gradient: mainGradient()),
             child: SafeArea(
@@ -72,7 +72,7 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Expanded(
                         child: ContentArea(
                           addPadding: false,

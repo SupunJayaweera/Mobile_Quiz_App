@@ -26,6 +26,10 @@ class MyZoomDrawerController extends GetxController {
 
   void signIn() {}
 
+  void recentScores() {
+    _launch("/");
+  }
+
   void website() {
     _launch("https://www.linkedin.com/in/supun-jayaweera/");
   }
@@ -37,7 +41,7 @@ class MyZoomDrawerController extends GetxController {
   void email() {
     final Uri emailLaunchUri = Uri(
       scheme: 'mailto',
-      path: 'info@dbestech.com',
+      path: 'jayaweeraspn@gmail.com',
     );
     _launch(emailLaunchUri.toString());
   }

@@ -7,6 +7,7 @@ import 'package:mobile_quiz_app/models/question_paper_model.dart';
 import 'package:mobile_quiz_app/screens/home/home_screen.dart';
 import 'package:mobile_quiz_app/screens/introduction/introduction.dart';
 import 'package:mobile_quiz_app/screens/login/login_screen.dart';
+import 'package:mobile_quiz_app/screens/login/register_screen.dart';
 import 'package:mobile_quiz_app/screens/questions/answer_check_screen.dart';
 import 'package:mobile_quiz_app/screens/questions/questions_screen.dart';
 import 'package:mobile_quiz_app/screens/questions/result_screen.dart';
@@ -42,6 +43,10 @@ class AppRoutes {
         GetPage(
           name: AnswerCheckScreen.routeName,
           page: () => const AnswerCheckScreen(),
+        ),
+        GetPage(
+          name: RegisterScreen.routeName,
+          page: () => RegisterScreen(),
         )
       ];
 }

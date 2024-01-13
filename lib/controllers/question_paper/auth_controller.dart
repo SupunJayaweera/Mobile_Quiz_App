@@ -6,6 +6,7 @@ import 'package:mobile_quiz_app/controllers/question_paper/app_logger.dart';
 import 'package:mobile_quiz_app/firebase_ref/references.dart';
 import 'package:mobile_quiz_app/screens/home/home_screen.dart';
 import 'package:mobile_quiz_app/screens/login/login_screen.dart';
+import 'package:mobile_quiz_app/screens/login/register_screen.dart';
 import 'package:mobile_quiz_app/widgets/dialogs/dialogue_widget.dart';
 
 class AuthConatroller extends GetxController {
@@ -28,6 +29,7 @@ class AuthConatroller extends GetxController {
       _user.value = user;
     });
 
+    // Commented out navigation to introduction for testing purposes
     navigateToIntroduction();
   }
 
@@ -46,6 +48,30 @@ class AuthConatroller extends GetxController {
       }
     } on Exception catch (error) {
       AppLogger.e(error);
+    }
+  }
+
+  Future<void> signInWithEmailAndPassword(String email, String password) async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      navigateToHomePage();
+    } on FirebaseAuthException catch (e) {
+      AppLogger.e(e);
+      // Handle sign-in errors, you can display an error message to the user
+    }
+  }
+
+  Future<void> registerWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      // You might want to do additional setup for a new user
+      // For example, you can save user information to Firestore or Realtime Database
+      navigateToHomePage();
+    } on FirebaseAuthException catch (e) {
+      AppLogger.e(e);
+      // Handle registration errors, you can display an error message to the user
     }
   }
 
@@ -92,6 +118,10 @@ class AuthConatroller extends GetxController {
 
   void naviagateToLoginPage() {
     Get.toNamed(LoginScreen.routeName);
+  }
+
+  void navigateToRegisterPage() {
+    Get.toNamed(RegisterScreen.routeName);
   }
 
   bool isLoggedIn() {
