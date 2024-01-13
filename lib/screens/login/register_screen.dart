@@ -76,8 +76,8 @@ class RegisterScreen extends GetView<AuthConatroller> {
               SizedBox(
                   height: 16), // Add some space between text field and button
               // Register button
-              MainButton(
-                onTap: () {
+              ElevatedButton(
+                onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     controller.registerWithEmailAndPassword(
                       _emailController.text.trim(),
@@ -85,7 +85,20 @@ class RegisterScreen extends GetView<AuthConatroller> {
                     );
                   }
                 },
-                child: Text("Register"),
+                style: ElevatedButton.styleFrom(
+                    shape: const StadiumBorder(),
+                    backgroundColor:
+                        Theme.of(context).splashColor.withOpacity(0.5),
+                    elevation: 10,
+                    shadowColor: Color.fromARGB(255, 34, 37, 41),
+                    minimumSize: const Size.fromHeight(45)),
+                child: Text(
+                  "Register",
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColorDark,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),
