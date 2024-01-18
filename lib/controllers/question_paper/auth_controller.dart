@@ -84,7 +84,7 @@ class AuthConatroller extends GetxController {
     } on FirebaseAuthException catch (e) {
       AppLogger.e(e);
       showSignInErrorAlert(
-          "Error Occured"); // Display registration error using an alert
+          "This Email Already Exist"); // Display registration error using an alert
     }
   }
 

@@ -33,7 +33,7 @@ class MyMenuScreen extends GetView<MyZoomDrawerController> {
               Positioned(
                 //bottom: 0,
                 right: 0,
-                top: 710,
+                top: 680,
                 child: _DrawerButton(
                   icon: Icons.login_outlined,
                   label: "login",
@@ -60,7 +60,6 @@ class MyMenuScreen extends GetView<MyZoomDrawerController> {
                                           Object>, // Cast to ImageProvider<Object>
                             ),
                     ),
-
                     const SizedBox(
                       height: 16,
                     ),
