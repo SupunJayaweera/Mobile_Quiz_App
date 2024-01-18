@@ -22,7 +22,7 @@ class AuthConatroller extends GetxController {
   late Stream<User?> _authStateChanges;
 
   void initAuth() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 3));
     _auth = FirebaseAuth.instance;
     _authStateChanges = _auth.authStateChanges();
     _authStateChanges.listen((User? user) {
@@ -57,8 +57,22 @@ class AuthConatroller extends GetxController {
       navigateToHomePage();
     } on FirebaseAuthException catch (e) {
       AppLogger.e(e);
-      // Handle sign-in errors, you can display an error message to the user
+      showSignInErrorAlert(
+          "Invalid email or password"); // Set your custom error message here
     }
+  }
+
+  void showSignInErrorAlert(String errorMessage) {
+    Get.defaultDialog(
+      title: "Sign In Error",
+      content: Text(errorMessage),
+      actions: [
+        TextButton(
+          onPressed: () => Get.back(),
+          child: Text("OK"),
+        ),
+      ],
+    );
   }
 
   Future<void> registerWithEmailAndPassword(
@@ -66,13 +80,25 @@ class AuthConatroller extends GetxController {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      // You might want to do additional setup for a new user
-      // For example, you can save user information to Firestore or Realtime Database
       navigateToHomePage();
     } on FirebaseAuthException catch (e) {
       AppLogger.e(e);
-      // Handle registration errors, you can display an error message to the user
+      showSignInErrorAlert(
+          "Error Occured"); // Display registration error using an alert
     }
+  }
+
+  void showRegisterErrorAlert(String errorMessage) {
+    Get.defaultDialog(
+      title: "Registration Error",
+      content: Text(errorMessage),
+      actions: [
+        TextButton(
+          onPressed: () => Get.back(),
+          child: Text("OK"),
+        ),
+      ],
+    );
   }
 
   saveUser(GoogleSignInAccount account) {

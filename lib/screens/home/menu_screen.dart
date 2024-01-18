@@ -30,11 +30,53 @@ class MyMenuScreen extends GetView<MyZoomDrawerController> {
                       controller.toggleDrawer();
                     },
                   )),
+              Positioned(
+                //bottom: 0,
+                right: 0,
+                top: 710,
+                child: _DrawerButton(
+                  icon: Icons.login_outlined,
+                  label: "login",
+                  onPressed: () => Get.offAndToNamed("/login"),
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.only(
                     right: MediaQuery.of(context).size.width * 0.3),
                 child: Column(
                   children: [
+                    Obx(
+                      () => controller.user.value == null
+                          ? const SizedBox()
+                          : CircleAvatar(
+                              radius: 30,
+                              backgroundImage: controller
+                                          .user.value!.photoURL !=
+                                      null
+                                  ? NetworkImage(
+                                      controller.user.value!.photoURL!)
+                                  : AssetImage('assets/images/user2.png')
+                                      as ImageProvider<
+                                          Object>, // Cast to ImageProvider<Object>
+                            ),
+                    ),
+
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Obx(() => controller.user.value == null
+                        ? const SizedBox()
+                        : Text(
+                            controller.user.value!.email ?? '',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: 14,
+                              color: onSurfaceTextColor,
+                            ),
+                          )),
+                    const SizedBox(
+                      height: 16,
+                    ),
                     Obx(() => controller.user.value == null
                         ? const SizedBox()
                         : Text(
@@ -48,31 +90,38 @@ class MyMenuScreen extends GetView<MyZoomDrawerController> {
                     const Spacer(
                       flex: 1,
                     ),
-                    _DrawerButton(
-                      icon: Icons.book_online_sharp,
-                      label: "Recent Scores",
-                      onPressed: () => controller.recentScores(),
-                    ),
-                    _DrawerButton(
-                      icon: Icons.web,
-                      label: "website",
-                      onPressed: () => controller.website(),
-                    ),
-                    _DrawerButton(
-                      icon: Icons.facebook,
-                      label: "facebook",
-                      onPressed: () => controller.facebook(),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15.0),
+                      child: _DrawerButton(
+                        icon: Icons.web,
+                        label: "website",
+                        onPressed: () => controller.website(),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 25),
+                      child: _DrawerButton(
+                        icon: Icons.facebook,
+                        label: "facebook",
+                        onPressed: () => controller.facebook(),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5),
                       child: _DrawerButton(
                         icon: Icons.email,
                         label: "email",
                         onPressed: () => controller.email(),
                       ),
                     ),
+                    // _DrawerButton(
+                    //   icon: Icons.book_online_sharp,
+                    //   label: "Recent Scores",
+                    //   onPressed: () => controller.recentScores(),
+                    // ),
                     const Spacer(
-                      flex: 4,
+                      flex: 5,
                     ),
                     _DrawerButton(
                       icon: Icons.logout,
@@ -81,7 +130,7 @@ class MyMenuScreen extends GetView<MyZoomDrawerController> {
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ))),
     );

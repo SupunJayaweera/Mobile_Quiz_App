@@ -57,7 +57,8 @@ class QuestionsScreen extends GetView<QuestionsController> {
                       Expanded(
                           child: ContentArea(
                               child: SingleChildScrollView(
-                                  padding: const EdgeInsets.only(top: 25),
+                                  padding: const EdgeInsets.only(
+                                      top: 25, left: 15, right: 15),
                                   child: Column(
                                     children: [
                                       Text(
@@ -71,7 +72,9 @@ class QuestionsScreen extends GetView<QuestionsController> {
                                             return ListView.separated(
                                                 shrinkWrap: true,
                                                 padding: const EdgeInsets.only(
-                                                    top: 25),
+                                                    top: 25,
+                                                    left: 15,
+                                                    right: 15),
                                                 physics:
                                                     NeverScrollableScrollPhysics(),
                                                 itemBuilder:

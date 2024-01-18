@@ -38,6 +38,18 @@ class MyZoomDrawerController extends GetxController {
     _launch("https://www.linkedin.com/in/supun-jayaweera/");
   }
 
+  void carouselWebOne() {
+    _launch("https://www.google.com/");
+  }
+
+  void carouselWebTwo() {
+    _launch("https://www.youtube.com/");
+  }
+
+  void carouselWebThree() {
+    _launch("http://lms.eng.ruh.ac.lk/my/");
+  }
+
   void email() {
     final Uri emailLaunchUri = Uri(
       scheme: 'mailto',

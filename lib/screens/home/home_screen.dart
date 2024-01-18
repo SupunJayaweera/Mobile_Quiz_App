@@ -13,6 +13,9 @@ import 'package:mobile_quiz_app/screens/home/question_card.dart';
 import 'package:mobile_quiz_app/widgets/app_circle_button.dart';
 import 'package:mobile_quiz_app/widgets/content_area.dart';
 
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 class HomeScreen extends GetView<MyZoomDrawerController> {
   const HomeScreen({super.key});
   static const String routeName = "/home";
@@ -20,6 +23,108 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
   @override
   Widget build(BuildContext context) {
     QuestionPaperController _questionPaperController = Get.find();
+
+    // Prepare Carousel Slider Data
+    // List<Widget> carouselItems = [
+    //   Container(
+    //     margin: EdgeInsets.all(6.0),
+    //     decoration: BoxDecoration(
+    //       borderRadius: BorderRadius.circular(8.0),
+    //       image: DecorationImage(
+    //         image: AssetImage("assets/images/carousel_sample01.png"),
+    //         fit: BoxFit.cover,
+    //       ),
+    //     ),
+    //   ),
+    //   Container(
+    //     margin: EdgeInsets.all(6.0),
+    //     decoration: BoxDecoration(
+    //       borderRadius: BorderRadius.circular(8.0),
+    //       image: DecorationImage(
+    //         image: AssetImage("assets/images/carousel_sample02.jpg"),
+    //         fit: BoxFit.cover,
+    //       ),
+    //     ),
+    //   ),
+    //   Container(
+    //     margin: EdgeInsets.all(6.0),
+    //     decoration: BoxDecoration(
+    //       borderRadius: BorderRadius.circular(8.0),
+    //       image: DecorationImage(
+    //         image: AssetImage("assets/images/carousel_sample03.png"),
+    //         fit: BoxFit.cover,
+    //       ),
+    //     ),
+    //   ),
+    //   // Add more items as needed
+    // ];
+    List<Widget> carouselItems = [
+      GestureDetector(
+        onTap: () => controller.carouselWebOne(),
+        // _launchUrl(
+        //     "https://www.google.com/"), // Replace with your actual URL
+        child: Container(
+          width: 300,
+          margin: EdgeInsets.all(6.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            image: const DecorationImage(
+              image: AssetImage("assets/images/biology.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+      GestureDetector(
+        onTap: () => controller.carouselWebTwo(),
+        // _launchUrl(
+        //     "https://www.youtube.com/"), // Replace with your actual URL
+        child: Container(
+          margin: EdgeInsets.all(6.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            image: const DecorationImage(
+              image: AssetImage("assets/images/chemistry.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+      GestureDetector(
+        onTap: () => controller.carouselWebTwo(),
+        // _launchUrl(
+        //     "https://www.youtube.com/"), // Replace with your actual URL
+        child: Container(
+          width: 250,
+          margin: EdgeInsets.all(6.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            image: const DecorationImage(
+              image: AssetImage("assets/images/maths.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+      GestureDetector(
+        onTap: () => controller.carouselWebTwo(),
+        // _launchUrl(
+        //     "https://www.youtube.com/"), // Replace with your actual URL
+        child: Container(
+          width: 200,
+          margin: EdgeInsets.all(6.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            image: const DecorationImage(
+              image: AssetImage("assets/images/phys.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+
+      // Add more items as needed
+    ];
 
     return Scaffold(
       body: GetBuilder<MyZoomDrawerController>(builder: (_) {
@@ -30,49 +135,61 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
           style: DrawerStyle.defaultStyle,
           controller: _.zoomDrawerController,
           slideWidth: MediaQuery.of(context).size.width * 1.4,
-          menuScreen: const MyMenuScreen(),
-          mainScreen: Container(
-            decoration: BoxDecoration(gradient: mainGradient()),
-            child: SafeArea(
-              child: SingleChildScrollView(
+          menuScreen: MyMenuScreen(),
+          mainScreen: SingleChildScrollView(
+            child: Container(
+              decoration: BoxDecoration(gradient: mainGradient()),
+              child: SafeArea(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Top Bar
                     Padding(
                       padding: EdgeInsets.all(mobileScreenPadding),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppCircleButton(
-                              onTap: controller.toggleDrawer,
-                              child: const Icon(AppIcons.menuLeft,
-                                  color: Colors.red)),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Row(
-                              children: [
-                                const Icon(AppIcons.peace, color: Colors.red),
-                                Text(
-                                  "Hello friend",
-                                  style: detailText.copyWith(
-                                      color: onSurfaceTextColor),
-                                ),
-                              ],
+                          Row(children: [
+                            AppCircleButton(
+                                onTap: controller.toggleDrawer,
+                                child: const Icon(AppIcons.menuLeft,
+                                    color: Colors.red)),
+                            const SizedBox(
+                              width: 30,
                             ),
-                          ),
-                          Text(
-                            "What do you want to learn today?",
-                            style:
-                                headerText.copyWith(color: onSurfaceTextColor),
-                          ),
+                            Text(
+                              "Welcome to Quiz Master",
+                              style: headerText.copyWith(
+                                  color: onSurfaceTextColor),
+                            ),
+                          ]),
                         ],
                       ),
                     ),
+
+                    // Carousel Widget
+                    // const SizedBox(
+                    //   height: 213,
+                    // ),
+                    CarouselSlider(
+                      items: carouselItems,
+                      options: CarouselOptions(
+                        height: 213.0,
+                        enlargeCenterPage: true,
+                        autoPlay: true,
+                        aspectRatio: 16 / 9,
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        enableInfiniteScroll: true,
+                        autoPlayAnimationDuration: Duration(milliseconds: 800),
+                        viewportFraction: 0.8,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    // QuestionCards
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: Expanded(
                         child: ContentArea(
                           addPadding: false,
@@ -97,6 +214,11 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
                         ),
                       ),
                     ),
+
+                    // Nav Bar
+                    const SizedBox(
+                      height: 40,
+                    ),
                   ],
                 ),
               ),
@@ -105,5 +227,16 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
         );
       }),
     );
+  }
+
+  // Function to launch a URL
+  _launchUrl(String url) async {
+    // ignore: deprecated_member_use
+    if (await canLaunch(url)) {
+      // ignore: deprecated_member_use
+      await launch(url, forceSafariVC: false, forceWebView: false);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

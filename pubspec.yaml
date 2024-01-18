@@ -45,6 +45,8 @@ dependencies:
   shimmer: ^3.0.0
   easy_separator: ^1.0.1
   provider: ^6.1.1
+  lottie: ^2.7.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

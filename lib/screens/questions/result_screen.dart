@@ -42,7 +42,9 @@ class ResultScreen extends GetView<QuestionsController> {
                     Padding(
                       padding: const EdgeInsets.only(top: 20, bottom: 5),
                       child: Text(
-                        'Congradualtions!',
+                        double.parse(controller.points) > 0.00
+                            ? 'Congratulations!'
+                            : 'Work Hard!',
                         style: headerText.copyWith(color: _textColor),
                       ),
                     ),
@@ -110,7 +112,7 @@ class ResultScreen extends GetView<QuestionsController> {
                       title: 'Try Again',
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Expanded(
