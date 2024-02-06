@@ -1,16 +1,50 @@
-# mobile_quiz_app
+# POS SYSTEM
 
-A new Flutter project.
+This Flutter app is designed to facilitate online learning through quizzes, study materials, and user-friendly features. Utilizing Firebase for backend functionalities, it offers a seamless experience for both educators and learners.
+
+## Contributors
+
+We would like to acknowledge the contributions of the following individuals to the E-Learning Quiz App:
+
+- [Supun Jayaweera](https://github.com/SupunJayaweera)
+
+## Table of Contents
+
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+
+## Features
+
+- **User Authentication:**
+  - Login screen for normal users with password verification and Google Sign-in.
+
+- **Functionality:**
+  - Time-bound quizzes can be done. 
+  - Calculate the final score.
+  - Study materials(video links, web links) are provided for further studies.
+
+- **Security:**
+  - Passwords are securely hashed and stored in Firebase.
+  
+- **Additional Functionality:**
+  - Dark and Light Mode.
+
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Visual Studio Code or Android Studio for app development.
+- Flutter SDK.
+- Firebase account.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/SupunJayaweera/Mobile_Quiz_App.git
