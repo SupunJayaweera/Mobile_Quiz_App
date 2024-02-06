@@ -1,10 +1,11 @@
 # E-Learning Quiz App
 
-This Flutter app is designed to facilitate online learning through quizzes, study materials, and user-friendly features. Utilizing Firebase for backend functionalities, it offers a seamless experience for both educators and learners.
+This Flutter app is designed to facilitate online learning through quizzes, study materials, and user-friendly features. Utilizing Firebase for backend functionalities offers a seamless experience for learners.
+This app was designed with the help of [dbestech](https://github.com/dastagir-ahmed) Youtube Channel.
 
 ## Contributors
 
-We would like to acknowledge the contributions of the following individuals to the E-Learning Quiz App:
+We want to acknowledge the contributions of the following individuals to the E-Learning Quiz App:
 
 - [Supun Jayaweera](https://github.com/SupunJayaweera)
 
