@@ -1,4 +1,4 @@
-# POS SYSTEM
+# E-Learning Quiz App
 
 This Flutter app is designed to facilitate online learning through quizzes, study materials, and user-friendly features. Utilizing Firebase for backend functionalities, it offers a seamless experience for both educators and learners.
 
